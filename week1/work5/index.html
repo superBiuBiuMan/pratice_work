@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>work5</title>
+    <style>
+        .hover {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 当鼠标指向图片时为图片添加边框，当鼠标移出图片时去除图片边框 -->
+    <div id="app">
+        <img :class="{hover:isHover}" @mouseleave="removeBorder" @mouseenter="addBorder" src="https://dreamlove.top/img/favicon.png" />
+    </div>
+    <!-- 张杰 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    isHover: false,
+                }
+            },
+            methods: {
+                addBorder() {
+                    this.isHover = true;
+                },
+                removeBorder(){
+                    this.isHover = false;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

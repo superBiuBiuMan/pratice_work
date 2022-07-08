@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>work2</title>
+
+</head>
+<!-- 张杰 -->
+<body>
+    <!-- 2、使用v-for指令输出九九乘法表 -->
+    <div id="app">
+        <table border="1" cellspacing="5px">
+            <tr v-for="row in number">
+                <td v-for="col in row">
+                    {{ col }}*{{ row }}={{ row*col }}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    number: 9
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

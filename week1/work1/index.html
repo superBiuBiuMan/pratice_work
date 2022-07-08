@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>work1</title>
+
+</head>
+    <!-- 张杰 -->
+<body>
+    <!-- 通过单击按钮切换图片的显示和隐藏。（按钮的文字也需要变化） -->
+    <div id="app">
+        <img v-show="isShow" src="https://dreamlove.top/img/favicon.png" />
+        <div class="btn">
+            <button @click="change">{{title}}</button>
+        </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    //控制图片显示隐藏
+                    isShow: true,
+                    //按钮文字
+                    title: "显示"
+                }
+            },
+            methods: {
+                change() {
+                    this.isShow = !this.isShow;
+                    this.title = this.isShow ? '显示' : '隐藏';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

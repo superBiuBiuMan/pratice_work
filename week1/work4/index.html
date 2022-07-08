@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+</head>
+
+<body>
+    <!-- 应用监听属性实现人民币和美元之间的汇率换算。 -->
+    <div id="app">
+        ¥:<input type="text" v-model="rmb" /><br /><br />
+        $:<input type="text" v-model="us" /><br /><br />
+        <h3>
+            {{rmb|format}}人民币={{us|format}}美元
+        </h3>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
+    <script>
+        // 张杰
+        const vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    //记录人民币
+                    rmb: "6.8",
+                    //记录美元
+                    us: "1",
+                    //汇率
+                    exchange: 6.8,
+                }
+            },
+            filters: {
+                /* 格式化 */
+                format(value) {
+                    return parseFloat(value).toFixed(2);
+                }
+            },
+            methods: {
+                /* 转换函数,type=0表示人民币到美元,type=1表示美元到人民币 */
+                trans(value, type = 1) {
+                    if (type == 1) {
+                        return (value / this.exchange);
+                    } else {
+                        return (value * this.exchange);
+                    }
+                },
+
+            },
+            watch: {
+                rmb(newValue) {
+                    this.us = this.trans(newValue, 0);
+                },
+                us(newValue) {
+                    this.rmb = this.trans(newValue, 1);
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

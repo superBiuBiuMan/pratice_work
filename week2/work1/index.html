@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .show{
+            display: flex;
+            flex-direction: column;
+            width:400px;
+        }
+        .show-item{
+            border-bottom: 2px solid #eee;
+            height: 100px;
+            line-height: 100px;
+            display: flex;
+        }
+        .show-item img{
+            width: 100px;
+            height: 100px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="searchKey" placeholder="请输入搜索结果"/>
+        <!-- 书籍展示 -->
+        <div class="show">
+            <div class="show-item" v-for="(item,index) in bookListFilterList" :key="item.id">
+                <img :src="item.cover_url" alt="">
+                <span>{{item.title}}</span>
+            </div>
+           
+        </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.0.0-alpha.1/axios.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data(){
+                return {
+                    //书籍列表
+                    bookList:[],
+                    //关键字
+                    searchKey:"",
+                }
+            },
+            computed: {
+                //显示的是过滤结果
+                bookListFilterList(){
+                    //返回过滤后的数据
+                    return this.bookList.filter(item=>{
+                        //如果包含关键字就返回
+                        return item.title.includes(this.searchKey)
+                    });
+                }
+            },
+            mounted() {
+                axios.get("https://api.shop.eduwork.cn/api/goods").then(res=>{
+                    //只保存书籍信息
+                    this.bookList = res.data.goods.data;
+                });
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>work3</title>
+    <style>
+        .data-show {
+            text-align: center;
+            width: 500px;
+            border: 1px solid #eee;
+        }
+
+        .data-show tr:first-child {
+            background-color: #f6f6f6;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 应用计算属性统计购物车中的商品总价。使用过滤器让价格保留2位小数( toFixed() )
+准备的数据： -->
+    <div id="app">
+        <table class="data-show" cellpadding="5px" cellspacing="0">
+            <tr>
+                <th>商品名称</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>金额</th>
+            </tr>
+            <tr v-for="(item,index) in goods" :key="index">
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.count}}</td>
+                <td>{{(item.count*item.price).toFixed(2)}}</td>
+            </tr>
+            <tr class="one">
+                <td>合计¥:{{allMoney}}</td>
+            </tr>
+        </table>
+    </div>
+    <!-- 张杰 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    goods: [{
+                            name: 'OPPO',
+                            price: 2999,
+                            count: 3
+                        },
+                        {
+                            name: '华为',
+                            price: 3699,
+                            count: 2
+                        }
+                    ]
+                }
+            },
+            computed: {
+                allMoney(){
+                    let sum=0;
+                    this.goods.forEach(item=>{
+                        sum+=(item.price*item.count);
+                    })
+                    return sum.toFixed(2);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

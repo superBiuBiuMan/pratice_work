@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 组件传值练习：两个按钮组件同时控制父组件数字加+，且显示按钮点击次数 -->
+    <div id="app">
+        <Son1 :click-amount.sync="clickAmount"></Son1><br /><br />
+        <Son2 :click-amount.sync="clickAmount"></Son2>
+        <h1>单击了{{clickAmount}}</h1>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        //创建并全局注册
+        Vue.component('Son1', {
+            props: ["clickAmount"],
+            template: `<button @click="$emit('update:clickAmount',++clickTime)">儿子1-单击我父元素+1 --{{clickAmount}}</button>`,
+            data() {
+                return {
+                    clickTime: this.clickAmount
+                }
+            },
+            watch: {
+                clickAmount(){
+                    this.clickTime = this.clickAmount;
+                }
+            },
+        });
+        Vue.component('Son2', {
+            props: ["clickAmount"],
+            template: `<button @click="$emit('update:clickAmount',clickTime+=2)">儿子2-单击我父元素+2 --{{clickAmount}}</button>`,
+            data() {
+                return {
+                    clickTime: this.clickAmount
+                }
+            },
+            watch: {
+                clickAmount(){
+                    this.clickTime = this.clickAmount;
+                }
+            },
+        });
+        var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    //单击次数
+                    clickAmount: 0,
+                }
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+
+</html>

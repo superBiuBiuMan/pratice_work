@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- v-model绑定复选框练习：在页面中应用复选框添加用户兴趣爱好选项，并添加实现全选、全不选和反选按钮操作。 -->
+    <div id="app">
+        <label><input type="checkbox" v-model="checkList" value="足球" />足球</label>
+        <label><input type="checkbox" v-model="checkList" value="篮球" />篮球</label>
+        <label><input type="checkbox" v-model="checkList" value="羽毛球" />羽毛球</label>
+        <br /><br />
+        <label><input type="checkbox" v-model="checkAll" />全选/全不选</label>
+        <label><input type="checkbox" v-model="reverseAll" />反选</label>
+
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    //选中列表
+                    checkList: [],
+                    //是否全选/全不选
+                    checkAll: false,
+                    //是否反选
+                    reverseAll: false,
+                }
+            },
+            watch: {
+                checkList(newValue) {
+                    if (newValue.length == 3) {
+                        this.checkAll = true;
+                    }else{
+                        this.checkAll = false;
+                    }
+                },
+                //全选/全不选
+                checkAll(newValue) {
+                    if (newValue) {
+                        //为全选
+                        this.checkList = ['足球', '篮球', '羽毛球'];
+                    } else {
+                        //为全不选
+                        this.checkList = [];
+                    }
+                },
+                //反选
+                reverseAll(newValue) {
+                    //执行反选
+                    let allCheckList = ['足球', '篮球', '羽毛球'];
+                    this.checkList = allCheckList.filter(item => {
+                        return !this.checkList.includes(item);
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

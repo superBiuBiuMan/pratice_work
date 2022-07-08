@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .show-table{
+            text-align: center;
+        }
+        th,td{
+            padding:10px;
+        }
+        /* 偶数样式 */
+        .even{
+            background-color: #e5e6f6;
+        }
+        /* 奇数样式 */
+        .odd{
+            background-color: #d3dde6
+        }
+    </style>
+</head>
+<body>
+    <!-- 组件-作用域插槽练习：在页面中输出一个信息列表并实现隔行变色效果 -->
+    <div id="app">
+        <table class="show-table" cellspacing="0">
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>职业</th>
+                <th>地址</th>
+            </tr>
+            <tr :class="{odd:(index+1)%2==1,even:(index+1)%2==0}" v-for="(item,index) in list" :key="index">
+                <td>{{index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.work}}</td>
+                <td>{{item.address}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data(){
+                return{
+                    list:[
+                        {
+                            name:"张三",
+                            age:"20",
+                            work:"演员",
+                            address:"北京",
+                        },
+                        {
+                            name:"李四",
+                            age:"60",
+                            work:"军人",
+                            address:"天津",
+                        },
+                        {
+                            name:"王五",
+                            age:"45",
+                            work:"画师",
+                            address:"南京",
+                        },
+                        {
+                            name:"老刘",
+                            age:"30",
+                            work:"导游",
+                            address:"吸睛",
+                        },
+                        {
+                            name:"影壁",
+                            age:"24",
+                            work:"演员",
+                            address:"龙晶",
+                        },
+                    ]
+                }
+            },
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>

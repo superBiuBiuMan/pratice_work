@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 多行文本框输入内容时随机变色 -->
+    <div id="app">
+        <textarea id="input-area" @input="inputValue" cols="30" rows="10"></textarea>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    // 用户输入的DOM
+                    inputArea: "",
+                }
+            },
+            mounted() {
+                this.inputArea = document.querySelector("#input-area");
+            },
+            methods: {
+                inputValue() {
+                    this.inputArea.style.color = this.randomColor()
+                },
+                //随机颜色
+                randomColor() {
+                    //3个RGB颜色组成hexColor,饱和度为255(十进制下),每一种饱和度满值均为255(10),FF(16),
+                    // 或者rgb(0,0,0);
+                    let r = this.getRandomIntInclusive();
+                    let g = this.getRandomIntInclusive();
+                    let b = this.getRandomIntInclusive();
+                    let alpha = this.getRandomIntInclusive(0.5,1);
+                    return `rgb(${r},${g},${b},${alpha})`;
+                },
+                //随机数 [x,y] 闭区间
+                getRandomIntInclusive(min = 0, max = 255) {
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
+                    return Math.floor(Math.random() * (max - min + 1) + min);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

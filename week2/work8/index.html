@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav {
+            display: inline-block;
+            background-color: #5598b6;
+            margin: 20px;
+        }
+
+        .nav span {
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+            background-color: transparent;
+            text-align: center;
+            color: #FFFFFF
+        }
+
+        .nav .active {
+            background-color: #e36885;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 每一次导航中的菜单被单击,就通过changTabIndex,然后由changTabIndex函数去更改tabIndex -->
+        <my-menu @chang-index="changTabIndex" :tabindex="tabIndex"></my-menu>
+    </div>
+    <!-- 动态组件练习：应用动态组件实现文字选项卡的切换。 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        Vue.component('my-menu', {
+            props: {
+                tabindex: {
+                    type: Number,
+                }
+            },
+            template: `<div class="nav">
+							<span @click="itemSelect(0)" :class="{active:tabindex==0}">音乐</span>
+							<span @click="itemSelect(1)" :class="{active:tabindex==1}">体育</span>
+							<span @click="itemSelect(2)" :class="{active:tabindex==2}">影视</span>
+							<span @click="itemSelect(3)" :class="{active:tabindex==3}">图片</span>
+						</div>`,
+
+            methods: {
+                itemSelect(itemIndex) {
+                    this.$emit('chang-index', itemIndex);
+                }
+            },
+        });
+        var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    //当前的索引
+                    tabIndex: 0,
+                }
+            },
+            methods: {
+                changTabIndex(newValue) {
+                    this.tabIndex = newValue;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

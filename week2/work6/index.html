@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            display: flex;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <shop-center>
+            <template v-slot:detail>
+                <span style="font-size:18px;display:block;">OPPO R9S</span>
+                <span style="color:gray">$5888.00</span>
+            </template>
+        </shop-center>
+        <shop-center>
+            <template v-slot:detail>
+                <span style="font-size:18px;display:block;">OPPO R10S</span>
+                <span style="color:gray">$5888.00</span>
+            </template>
+        </shop-center>
+        <shop-center>
+            <template v-slot:detail>
+                <span style="font-size:18px;display:block;">OPPO R11S</span>
+                <span style="color:gray">$5888.00</span>
+            </template>
+        </shop-center>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+    <script>
+        Vue.component("shop-center",{
+            template:`
+                <div>
+                    <div>
+                        <slot>
+                            <img src="https://dreamlove.top/img/favicon.png" style="width:150px;height:150px"/>
+                        </slot>
+                    </div>
+                    <div>
+                        <slot name="detail">
+                            <span style="font-size:18px;display:block;">手机名称1</span>
+                            <span style="color:gray">手机价格1</span>
+                        </slot>
+                    </div>
+                 </div>
+            `,
+        });
+        var vm = new Vue({
+            el:"#app",
+            data(){
+                return{
+
+                }
+            },
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>
