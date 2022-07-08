@@ -51,7 +51,6 @@
 							<span @click="itemSelect(2)" :class="{active:tabindex==2}">影视</span>
 							<span @click="itemSelect(3)" :class="{active:tabindex==3}">图片</span>
 						</div>`,
-
             methods: {
                 itemSelect(itemIndex) {
                     this.$emit('chang-index', itemIndex);
