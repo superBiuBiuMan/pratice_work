@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>div跟随鼠标移动</title>
+		<style>
+			#box1{
+ 
+				position:absolute;
+				width: 200px;
+				height: 100px;
+				background-color: coral;
+	
+				
+			}
+		</style>
+		<script type="text/javascript">
+			//div跟随鼠标移动
+			window.onload=function(){
+				//获取box1
+				var box1=document.getElementById("box1");
+				//onmousemove事件将会在鼠标在元素中移动时被触发
+				//事件绑定给box1的话，当鼠标移除box1则无效，body也小，绑定给document
+				document.onmousemove=function(event){
+					//获取鼠标的坐标
+					//event=event||window.event;
+					
+					//获取滚动条滚动的距离Chrome认为浏览器的滚动条是body的，可以通过body.scrollTop获得
+					//火狐等浏览器认为浏览器的滚动条是html的
+					var st=document.body.scrollTop||document.documentElement.scrollTop;
+			
+					//client X和client Y是用于获取鼠标在当前的可见窗口的坐标
+					//div的偏移量，是相对于整个页面的
+					//pageX pageY是可以获取鼠标相对于当前页面的，但IE8不支持
+					var x=event.pageX;
+					var y=event.pageY;
+					//设置div的偏移
+					box1.style.left=x+"px";
+					box1.style.top=y+st+"px";
+				};
+			};
+			
+		</script>
+	</head>
+	<body style="height: 1000px;">
+		<div id="box1"></div>
+	</body>
+</html>

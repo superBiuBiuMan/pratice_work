@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const array1 = [{
+            name: '李白1',
+            age: 18
+        }, {
+            name: '李白2',
+            age: 19
+        }, {
+            name: '李白3',
+            age: 20
+        }, {
+            name: '李白4',
+            age: 21
+        }];
+        //寻找年龄大于20的项目,返回找到的对象
+        const found = array1.find(element => element.age > 20);
+        //对寻找到的对象的年龄进行修改
+        found.age = 1888;
+        //输出查看当前寻找到的对象
+        console.log(found);//输出 item项目修改.html:31 {name: '李白4', age: 1888}
+        //将原对象转化为字符串,避免干扰
+        console.log(JSON.stringify(array1));//输出 [{"name":"李白1","age":18},{"name":"李白2","age":19},{"name":"李白3","age":20},{"name":"李白4","age":1888}]
+    </script>
+</body>
+
+</html>

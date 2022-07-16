@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //array的toString
+        // let userList = ['用户1','用户2','用户3'];
+        // console.log(userList.toString());
+        // console.log(typeof userList.toString());
+
+        //函数当中的toString
+        // function sayName(){
+        //     console.log("我叫将军大人");
+        // }
+        // console.log(sayName.toString());
+        // console.log(typeof sayName.toString());
+
+        // Date的toString()
+        // var time = new Date();
+        // console.log(time.toString());
+        // console.log(typeof time.toString());
+
+        // RegExp的toString()方法
+        // 与function的toString()方法类似，将返回正则表达式的文本定义。比如，/\d+/g.toString()会返回字符串”/\\d+/g”。
+        // var reg = new RegExp(/\w{5,10}/);
+        // console.log(reg.toString());
+        // console.log(typeof reg.toString());
+
+        //object的toString
+        // let userInfo = {
+        //     "ID": "1",
+        //     "JobTitle": "Software Engineer",
+        //     "EmailAddress": "Gil_West3007@elnee.tech",
+        //     "FirstNameLastName": "Gil West"
+        // };
+        // console.log(userInfo.toString()); //输出 [object Object]
+        // console.log("数据类型取值", userInfo.toString().slice(8, -1)); //输出 数据类型 Object
+        // //其他的,比如说数组
+        // let userList = ['用户1', '用户2'];
+        // console.log(Object.prototype.toString.call(userList));//输出 [object Array]
+        // console.log("数据类型取值", Object.prototype.toString.call(userList).slice(8, -1));//输出 数据类型取值 Array
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数学公式-梦洁小站-dreamlove.top</title>
+    <link rel="icon" href="/favicon.png" />
+    <style type="text/css">
+      html,
+      body {
+        margin: 0px;
+        height: 100%;
+      }
+
+      body,
+      td,
+      th {
+        font-family: "黑体";
+        font-size: 12px;
+        color: #900;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      公式黑板使用说明：直接录入数学公式，所见即所得；键盘同时按下CTRL+SHIFT+L复制LATEX源码到论坛发帖框；LATEX源码放在$$与$$之间，即可保存预览或发帖。
+    </div>
+    <div style="height: 100%; width: 100%" id="editorContainer"></div>
+    <script src="static/js/index.js"></script>
+    <script type="text/javaScript">
+           editor = com.wiris.jsEditor.JsEditor.newInstance({
+      			'backgroundColor':'#008060','color':'#ffffff','fontSize':'32px','fontFamily':'Times New Roman'
+      		});
+      editor.insertInto(document.getElementById('editorContainer'));
+      editor.setMathML("<math><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>=</mo><mn>0</mn></math>");
+    </script>
+  </body>
+</html>

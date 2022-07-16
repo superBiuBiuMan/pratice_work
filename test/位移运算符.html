@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = '12';
+        let afterA = a >>> 0;
+        console.log(afterA); //12
+        console.log(typeof afterA);//number
+
+        var b = 'a12a';
+        let afterB = b >>> 0;
+        console.log(afterB); //0
+        console.log(typeof afterB);//number
+
+        var c = '12a';
+        let afterC = c >>> 0;
+        console.log(afterC); //0
+        console.log(typeof afterC);//number
+    </script>
+</body>
+
+</html>
