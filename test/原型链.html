@@ -1,0 +1,22 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Dog(name, color) {
+        this.name = name;
+        this.color = color;
+      }
+      //为原型链上添加一个属性'sex';
+      Dog.prototype.sex = "未知";
+      //建立一个实例化对象
+      var xiaobai = new Dog("小白", "白色");
+      //输出结果为 '未知'
+      console.log(xiaobai.age);
+    </script>
+  </body>
+</html>

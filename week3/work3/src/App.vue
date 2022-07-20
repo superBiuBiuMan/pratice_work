@@ -6,21 +6,20 @@
 </template>
 
 <script>
-import MyComponent from '@/components/MyComponent'
+import MyComponent from "@/components/MyComponent";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     MyComponent,
   },
-  methods:{
+
+  methods: {
     //给自定义组件绑定的自定义事件
-    check(event){
-      console.log("event",event);
-    }
-  }
-}
+    check(event) {
+      console.log("event", event);
+    },
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

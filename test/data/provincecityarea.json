@@ -1,0 +1,22 @@
+{
+    "province": [
+        {
+            "name": "江西省",
+            "id": 1
+        }
+    ],
+    "city": [
+        {
+            "name": "南昌市",
+            "id": 10,
+            "parentId": 1
+        }
+    ],
+    "area": [
+        {
+            "name": "高新区",
+            "id": 100,
+            "parentId": 1
+        }
+    ]
+}
