@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+    //   const array1 = [1, 10, 2, 3, 4, 5, 8, 10];
+    //   const initialValue = 0;
+    //   let result = array1.reduce((prev, item) => {
+    //     if (item >= 8) {
+    //       return (prev += item);
+    //     } else {
+    //       return prev;
+    //     }
+    //   }, 0);
+    //   //输出28
+    //   console.log("相加结果", result);
+
+      //或者你可以写的更简单一点
+      const array1 = [1, 10, 2, 3, 4, 5, 8, 10];
+      const initialValue = 0;
+      let result = array1.reduce((prev, item) => {
+        return (prev += item >= 8 ? item : 0);
+      }, 0);
+      //输出28
+      console.log("相加结果", result);
+    </script>
+  </body>
+</html>

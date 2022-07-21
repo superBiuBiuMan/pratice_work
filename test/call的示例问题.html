@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Product(name, price) {
+        this.name = name;
+        this.price = price;
+      }
+      console.log(new Product(100,200));
+      function Food(name, price) {
+        Product.call(this, name, price); //这里是重点
+        // this.Product(name,price)让任意的函数,成为对象的方法
+        // this就是此构造函数出来的实例化对象
+        // 
+        this.category = "food";
+      }
+      let obj = new Food("cheese", 5);
+
+      console.log(obj.name);
+      console.log(obj);
+      // expected output: "cheese"
+    </script>
+  </body>
+</html>
